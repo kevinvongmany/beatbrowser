@@ -10,7 +10,7 @@ localStorage.setItem("dropDownListElements", JSON.stringify(sampleValues));
 // problaby select any options from dropdown list
 function dropDownList() {
     const dropdown = document.getElementById("dropDownListElements");
-    // dropdown.innerHTML = ""; // Clear any existing options (Test if it actually erase existing options? We might wanna have them as history search)
+    dropdown.innerHTML = ""; // Clear out old values before adding new ones
     // Get the array from localStorage and load it
     const options = JSON.parse(localStorage.getItem("dropDownListElements")) || []; // if the array is null or underfined, return an empty array instead.
     for (let i = 0; i <options.length; i++) {
