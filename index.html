@@ -7,7 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <label for="dropDownListElements">Previous Song searched:</label>
+    <select id="dropDownListElements"></select> 
+    <!--The for attribute in the <label> tag should match the id of the associated form element. 
+    In this case, it should reference the id of the <select> element -->
+    <input type="text" id="newOptionInput" placeholder="New option">
+    <button id="addSongBtn">Add Songs</button>
+    <script src="script.js"></script>
 
     <script src="/assets/js/logic.js"></script>
 </body>
