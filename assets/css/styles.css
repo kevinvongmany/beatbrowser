@@ -1,0 +1,55 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Light background to make the search box stand out */
+}
+.search-box {
+    display: flex;
+    flex-direction: column; /* Change the direction to column to stack children vertically */
+    align-items: center; /* Center-align children horizontally */
+    justify-content: center; /* Center-align children vertically */
+    background-color: white;
+    padding: 20px; /* Adjust padding as needed */
+    width: 500px; /* Set a fixed width */
+    height: 500px; /* Set the same value for height to make it square */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 60px auto; /* Keep the margin to center the box, auto for horizontal centering */
+}
+
+.search-input {
+    padding: 15px; /* Increased padding for a larger input field */
+    margin-bottom: 20px; /* Add bottom margin for vertical spacing */
+    font-size: 18px; /* Increased font size for better visibility */
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    width: 80%; /* Make the search window wider */
+    text-align: center; /* Center the placeholder and input text */
+}
+
+.search-button {
+    padding: 10px 20px; /* Example padding, adjust as needed */
+    font-size: 18px; /* Match the input field font size for consistency */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff; /* Example background color */
+    color: white;
+    margin-top: 0; /* Adjust top margin if needed for spacing */
+}
+
+
+/* search btutton with Spotify colors */
+.spotify-search-btn {
+    background-color: #1DB954; /* Spotify green */
+    color: white;
+    padding: 15px 30px; /* Increased padding */
+    border: none;
+    border-radius: 7.5px; /* Slightly increased border-radius for visual proportion */
+    cursor: pointer;
+    font-size: 24px; /* Increased font size */
+}
