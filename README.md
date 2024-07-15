@@ -6,8 +6,11 @@ Deployed application URL:
 ## Description
 
 The motivation behind BeatBrowser was to create a seamless and engaging way for music enthusiasts to discover and learn more about their favorite songs, artists, and albums. Music is a universal language, and having a tool that makes it easier to explore and connect with music was a driving force behind this project.
+
 This project was built to fill a gap in the market for a user-friendly music discovery tool that not only provides quick access to music but also offers rich, contextual information. By integrating the Spotify API for music data and the Wikipedia API for detailed descriptions, BeatBrowser aims to provide a comprehensive music discovery experience.
+
 BeatBrowser solves this problem of fragmented music discovery experiences by combining accurate search results with informative descriptions and artist recommendations. Users no longer need to switch between different platforms to find and learn about music; BeatBrowser consolidates this information in one place.
+
 During the development of BeatBrowser, we learned how to effectively integrate multiple APIs to create a cohesive user experience. Additionally, we gained valuable insights into handling asynchronous data fetching, managing state in a web application, and designing intuitive user interfaces.
 
 
@@ -37,8 +40,11 @@ Search for Beatbrowser in your web browser or launch the page from the repositor
 ## Credits
 
 Project Lead: Kevin Vongmany  https://github.com/kevinvongmany 
+
 Leon Tran  https://github.com/leontran44 
+
 Adriana Janikova  https://github.com/adrianajani 
+
 Cameron Beattie  https://github.com/Cbeattie97 
 
 ## License
