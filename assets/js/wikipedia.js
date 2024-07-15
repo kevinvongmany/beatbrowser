@@ -5,7 +5,6 @@ const apiParams = {
     format: 'json',
     origin: '*',
     prop: 'extracts', // Get basic article information and an extract of the content.
-    inprop: 'url', // Get the full URL of the article.
     exintro: true, // Get only the introduction section of the article.
     explaintext: true, // Return the extract in plain text, not HTML.
 };
