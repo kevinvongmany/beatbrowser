@@ -11,8 +11,6 @@ body, html {
     flex-direction: column; /* Change the direction to column to stack children vertically */
     align-items: center; /* Center-align children horizontally */
     justify-content: center; /* Center-align children vertically */
-    background-color: white;
-    padding: 20px; /* Adjust padding as needed */
     width: 500px; /* Set a fixed width */
     height: 500px; /* Set the same value for height to make it square */
     border-radius: 10px;
@@ -31,16 +29,7 @@ body, html {
     text-align: center; /* Center the placeholder and input text */
 }
 
-.search-button {
-    padding: 10px 20px; /* Example padding, adjust as needed */
-    font-size: 18px; /* Match the input field font size for consistency */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: #007bff; /* Example background color */
-    color: white;
-    margin-top: 0; /* Adjust top margin if needed for spacing */
-}
+
 
 
 /* search btutton with Spotify colors */
