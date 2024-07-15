@@ -20,7 +20,7 @@ fetch(
   authRequestOptions
 )
   .then((response) => response.json())
-  .then((result) => console.log(result))
+  // .then((result) => console.log(result))
   .then((result) => searchQuery(result.access_token, "track"))
   .catch((error) => console.log("error", error));
 
@@ -38,7 +38,7 @@ function searchQuery(token, typeQuery) {
     };
     
     // typeQuery = "album";
-    let name = "Never Gonna Give You Up";
+    let name = "Black Parade";
     
     fetch(
       `https://api.spotify.com/v1/search?q=${encodeURIComponent(name)}&type=${typeQuery}&limit=5`,
