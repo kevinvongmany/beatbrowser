@@ -17,39 +17,43 @@
         }
     </script>
     <title>BeatBrowser</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body class="bg-gray-100">
     
-    <header class="border-black bg-gradient-to-r from-green-300 border-b-4  to-orange-500" class="mx-auto min flex">
-        <i class="fa-solid fa-headphones "></i>
+    <header class="border-black bg-gradient-to-r from-green-300 border-b-4  to-orange-500 h-20 inine-block">
+        <i class="fa-solid fa-headphones " aria-hidden="true"></i>
     </header>
-    <main class="flow-root"> 
-        <div id="BBLogo">
-            <h1 class="mx-auto text-black-500 text-5xl font-black">BeatBrowser</h1>
-            <!-- <img src="assets/images/BBLogo.png" alt="BeatBrowser Logo">  -->
-        </div>
-        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6">
-            <input id="songSearch" type="text" placeholder="Search song..." class="search-input form-input px-6 py-3 border border-gray-300 rounded-md text-center text-lg mb-5 w-4/5 focus:outline-none focus:ring-2 focus:ring-clifford focus:border-transparent">
-            <button id="spotifySearchBtn" class="spotify-search-btn bg-clifford hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md text-lg">Search</button>
-            <div id="songResults" class="song-results"></div>
-        </div>
-        <div id="songResults" class="song-results"></div>
-        <div>
-            <label for="dropDownListElements">Previous Song searched:</label>
-            <select id="dropDownListElements"></select> 
-            <!--The for attribute in the <label> tag should match the id of the associated form element. 
-            In this case, it should reference the id of the <select> element -->
-            <input type="text" id="newOptionInput" placeholder="New option">
-            <button id="addSongBtn">Add Songs</button>
-        </div>
-        
+    <main class="flex p-8">
+        <section class="float-left"> 
+                <div id="BBLogo" class="">
+                    <h1 class="mx-auto text-black-500 text-5xl font-black">BeatBrowser</h1>
+                    <!-- <img src="assets/images/BBLogo.png" alt="BeatBrowser Logo">  -->
+                </div>
+                <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6">
+                    <input id="songSearch" type="text" placeholder="Search song..." class="search-input form-input px-6 py-3 border border-gray-300 rounded-md text-center text-lg mb-5 w-4/5 focus:outline-none focus:ring-2 focus:ring-clifford focus:border-transparent">
+                    <button id="spotifySearchBtn" class="spotify-search-btn bg-clifford hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md text-lg">Search</button>
+                    <div id="songResults" class="song-results"></div>
+                </div>
+                <div id="songResults" class="song-results"></div>
+                <div>
+                    <label for="dropDownListElements">Previous Song searched:</label>
+                    <select id="dropDownListElements"></select> 
+                    <!--The for attribute in the <label> tag should match the id of the associated form element. 
+                    In this case, it should reference the id of the <select> element -->
+                    <input type="text" id="newOptionInput" placeholder="New option">
+                    <button id="addSongBtn">Add Songs</button>
+                </div>
+        </section>
+        <aside id="heroResult" class="float-right">
+            <h2>Top Result</h2>
+        </aside>
     </main>
-    <aside id="heroResult">
-        <h2>Top Result</h2>
-    </aside>
-    <section id="searchResults">
-        
+    <section id="searchResults" class="inline-grid">
+        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
+        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
+        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
+        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
     </section>
     <script src="./assets/js/script.js"></script>
     <script src="/assets/js/logic.js"></script>
