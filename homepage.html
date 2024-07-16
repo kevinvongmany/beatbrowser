@@ -21,10 +21,10 @@
 </head>
 <body>
     
-    <header class="border-black bg-gradient-to-r from-green-300 border-b-4  to-orange-500" class="mx-auto  flex">
+    <header class="border-black bg-gradient-to-r from-green-300 border-b-4  to-orange-500" class="mx-auto min flex">
         <i class="fa-solid fa-headphones "></i>
     </header>
-    <main class="grid grid-cols-12 gap-4 sm:grid-cols-6 "></main> <!--check grid works-->
+    <main class="grid grid-cols-12 gap-4 sm:grid-cols-6"> <!--check grid works-->
         <div id="BBLogo">
             <h1 class="mx-auto text-black-500 text-5xl font-black">BeatBrowser</h1>
             <!-- <img src="assets/images/BBLogo.png" alt="BeatBrowser Logo">  -->
@@ -42,8 +42,19 @@
                     </svg>
                     </button>
                 </div>
-        </div>
-
+        </div> 
+        <label for="dropDownListElements">Previous Song searched:</label>
+        <select id="dropDownListElements"></select> 
+        <!--The for attribute in the <label> tag should match the id of the associated form element. 
+        In this case, it should reference the id of the <select> element -->
+        <input type="text" id="newOptionInput" placeholder="New option">
+        <button id="addSongBtn">Add Songs</button>
+        <script src="./assets/js/script.js"></script>
+        <script src="/assets/js/logic.js"></script>
+    </main>
+    <aside>
+        <h2>Top 10 Songs</h2>
+    </aside>
 
 </body>
 </html>
