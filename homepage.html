@@ -17,13 +17,9 @@
         }
     </script>
     <title>BeatBrowser</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="bg-gray-100">
-    
-    <!-- <header class="border-black bg-gradient-to-r from-green-300 border-b-4  to-orange-500" class="mx-auto min flex">
-        <i class="fa-solid fa-headphones "></i> -->
-
+<body class="bg-gray-100 row flex flex-wrap w-full">
         <header class="border-black bg-gradient-to-r from-green-300 border-b-8 to-orange-500 mx-auto min flex justify-between items-center px-8 py-2 w-full">
             <i class="fa-solid fa-headphones"></i>
             
@@ -33,14 +29,11 @@
                 <div class="absolute inset-x-0 top-0 h-32 flex justify-center items-center ...">
                     <span class="emoji" role="img" aria-label="headphones" style="font-size: 500%;">🎧</span>
                 </div>
-                </div>
-                </div>
-              </div>
+            </div>
             
         </header>
         
-    </header>
-    <main class="flow-root"> 
+    <main class="flex flex-col lg:w-1/2 justify-center items-center"> 
         <div id="BBLogo">
              <!-- <h1 class="mx-auto text-black-500 text-5xl font-black">BeatBrowser</h1> 
              <img src="assets/images/BBLogo.png" alt="BeatBrowser Logo">   -->
@@ -61,11 +54,43 @@
         </div>
         
     </main>
-    <aside id="heroResult">
-        <h2>Top Result</h2>
-    </aside>
-    <section id="searchResults">
-        
+    <section id="heroResult" class="lg:w-1/2">
+
+        <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+            <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                    <div class="mx-auto flex h-12 w-12 flex-shr" class=" solid-green-100"ink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                        <i class="fa fa-music" aria-hidden="true"></i>
+                    </div>
+                    <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                        <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Song Title</h3>
+                        <div class="mt-2">
+                            <p id="artistName" class="text-sm text-gray-500">Artist name</p>
+                            <hr>
+                            <p id="albumnName" class="text-sm text-gray-500">Albumn name</p>
+                            <hr>
+                            <p id="songInfo" class="text-sm text-gray-500">Wikipedia details-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo perspiciatis repudiandae maxime? Nihil voluptates voluptatum quisquam nobis tenetur magnam sed, nesciunt cum omnis doloremque laborum et, excepturi inventore perferendis necessitatibus!</p>
+                            <hr>
+                            <p id="discography" class="text-sm text-gray-500">Discography</p>
+                            <hr>
+                            <p id="similarArtists" class="text-sm text-gray-500">Similar Artists</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <button type="button" class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 sm:ml-3 sm:w-auto">Close</button>
+                <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-green-100 px-3 py-2 text-sm font-semibold hover:bg-green-600 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Listen on Spotify</button>
+            </div>
+
+    </section>
+    <section id="searchResults" class="flex flex-wrap w-full lg:w-half justify-between items-center">
+        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6">
+            
+        </div>
+        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
+        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
+        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
     </section>
     <script src="./assets/js/script.js"></script>
     <script src="/assets/js/logic.js"></script>
