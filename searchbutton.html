@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind Config Script below, see https://tailwindcss.com/docs/configuration for more info -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> 
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+    <title>Spotify Search Button</title>
+    <link rel="stylesheet" href="./assets/css/styles.css"> 
+</head>
+<body>
+</head>
+<body class="h-full bg-gray-100 flex justify-center items-center">
+    <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6">
+        <input id="songSearch" type="text" placeholder="Search song..." class="search-input form-input px-6 py-3 border border-gray-300 rounded-md text-center text-lg mb-5 w-4/5 focus:outline-none focus:ring-2 focus:ring-clifford focus:border-transparent">
+        <button id="spotifySearchBtn" class="spotify-search-btn bg-clifford hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md text-lg">Search</button>
+        <div id="songResults" class="song-results"></div>
+    </div>
+    <div id="songResults" class="song-results"></div>
+    <script src="./assets/js/script.js"></script>
+</body>
+</body>
+</html>
+
