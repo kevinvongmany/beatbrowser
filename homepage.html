@@ -19,7 +19,7 @@
     <title>BeatBrowser</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="bg-gray-100 row flex flex-wrap w-full">
+<body class="bg-gray-100 row flex flex-wrap w-full justify-around items-center">
         <header class="border-black bg-gradient-to-r from-green-300 border-b-8 to-orange-500 mx-auto min flex justify-between items-center px-8 py-2 w-full">
             <i class="fa-solid fa-headphones"></i>
             
@@ -33,7 +33,7 @@
             
         </header>
         
-    <main class="flex flex-col lg:w-1/2 justify-center items-center"> 
+    <main class="flex flex-col lg:w-half justify-around items-center"> 
         <div id="BBLogo">
              <!-- <h1 class="mx-auto text-black-500 text-5xl font-black">BeatBrowser</h1> 
              <img src="assets/images/BBLogo.png" alt="BeatBrowser Logo">   -->
@@ -54,7 +54,7 @@
         </div>
         
     </main>
-    <section id="heroResult" class="lg:w-1/2">
+    <section id="heroResult" class="lg:w-half">
 
         <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
@@ -85,12 +85,12 @@
 
     </section>
     <section id="searchResults" class="flex flex-wrap w-full lg:w-half justify-between items-center">
-        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6">
+        <div class="search-box items-center justify-center bg-white p-5 w-full lg:w-half h-full max-h-md rounded-lg shadow-md m-6">
             
         </div>
-        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
-        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
-        <div class="search-box flex flex-col items-center justify-center bg-white p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6"></div>
+        <div class="search-box items-center justify-center bg-white p-5 w-full lg:w-half h-full max-h-md rounded-lg shadow-md m-6"></div>
+        <div class="search-box items-center justify-center bg-white p-5 w-full lg:w-half h-full max-h-md rounded-lg shadow-md m-6"></div>
+        <div class="search-box items-center justify-center bg-white p-5 w-full lg:w-half h-full max-h-md rounded-lg shadow-md m-6"></div>
     </section>
     <script src="./assets/js/script.js"></script>
     <script src="/assets/js/logic.js"></script>
