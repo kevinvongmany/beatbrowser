@@ -9,7 +9,7 @@ const apiParams = {
     explaintext: true, // Return the extract in plain text, not HTML.
 };
 
-function searchQuery(searchTerm) {
+function wikiSearchQuery(searchTerm) {
     apiParams.titles = searchTerm;
     let url = new URL(wikipediaApiUrl);
     url.search = new URLSearchParams(apiParams).toString();
@@ -21,12 +21,12 @@ function searchQuery(searchTerm) {
         .then((result) => {
             const longDescript = Object.values(result.query.pages)[0].extract
             const shortDescript = getFirstSentence(longDescript);
-            assignToHTML(longDescript, shortDescript);
+            assignToResults(longDescript, shortDescript, elementIndex);
         })
         .catch((error) => console.log("error", error));
 }
 
-console.log(searchQuery("My Chemical Romance"));
+console.log(wikiSearchQuery("My Chemical Romance"));
 
 function getFirstSentence(inputString) {
     const sentences = inputString.split("."); // Split the string into words
@@ -34,7 +34,11 @@ function getFirstSentence(inputString) {
 
 }
 
-function assignToHTML(long, short) {
-    console.log(long);
-    console.log(short);
+function assignToResults(long, short, elementIndex) {
+    let resultsObj = JSON.parse(sessionStorage.getItem("results")) || {};
+    resultsObj[elementIndex] = {
+        long: long,
+        short: short
+    };
+    sessionStorage.setItem("results", resultsObj);
 }
