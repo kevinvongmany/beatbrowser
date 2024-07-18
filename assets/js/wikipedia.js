@@ -5,40 +5,61 @@ const apiParams = {
     format: 'json',
     origin: '*',
     prop: 'extracts', // Get basic article information and an extract of the content.
+    redirects: true, // Automatically resolve redirects.
     exintro: true, // Get only the introduction section of the article.
     explaintext: true, // Return the extract in plain text, not HTML.
 };
 
-function wikiSearchQuery(searchTerm) {
+function wikiSearchQuery(searchTerm, elementIndex) {
     apiParams.titles = searchTerm;
     let url = new URL(wikipediaApiUrl);
     url.search = new URLSearchParams(apiParams).toString();
-    console.log(url.search);
-    console.log(url);
 
     fetch(url)
         .then((response) => response.json())
         .then((result) => {
-            const longDescript = Object.values(result.query.pages)[0].extract
-            const shortDescript = getFirstSentence(longDescript);
-            assignToResults(longDescript, shortDescript, elementIndex);
+            if (result.query.pages[-1]) {
+                assignToResults("No description available", "", elementIndex);
+            } else {
+                const longDescript = Object.values(result.query.pages)[0].extract
+                const shortDescript = getFirstSentence(longDescript);
+                const results = assignToResults(longDescript, shortDescript, elementIndex);
+                renderDescription(results);
+            }
         })
         .catch((error) => console.log("error", error));
 }
 
-console.log(wikiSearchQuery("My Chemical Romance"));
-
 function getFirstSentence(inputString) {
-    const sentences = inputString.split("."); // Split the string into words
-    return `${sentences[0]}...`;
+    try {
+        const sentences = inputString.split("."); // Split the string into words
+        return `${sentences[0]}.`;
+    } catch (error) {
+        return "No description available";
+    }
 
 }
 
+function renderDescription(descriptions) {
+  songData = JSON.parse(sessionStorage.getItem("songResults"));
+//   console.log(songData);
+//   console.log(descriptions[songData.spotify_id]);
+  songData.forEach((result) => {
+    const resultDiv = document.getElementById(`${result.spotify_id}`);
+    const resultDescription = document.createElement("p");
+    resultDescription.id = `description-${result.spotify_id}`;
+    resultDescription.setAttribute("class", "text-sm text-gray-500");
+    resultDescription.textContent = descriptions[result.spotify_id].short;
+    resultDiv.appendChild(resultDescription);
+  });
+}
+
 function assignToResults(long, short, elementIndex) {
-    let resultsObj = JSON.parse(sessionStorage.getItem("results")) || {};
+    let resultsObj = JSON.parse(sessionStorage.getItem("descriptions")) || {};
     resultsObj[elementIndex] = {
         long: long,
         short: short
     };
-    sessionStorage.setItem("results", resultsObj);
+    sessionStorage.setItem("descriptions", JSON.stringify(resultsObj));
+    return resultsObj;
 }

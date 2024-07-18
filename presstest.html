@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind Config Script below, see https://tailwindcss.com/docs/configuration for more info -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> 
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
+                }
+            }
+        }
+    </script>
+    <title>Spotify Search Button</title>
+    <link rel="stylesheet" href="./assets/css/styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+</head>
+<body class="h-full bg-gray-100 flex flex-wrap justify-center">
+    <section class="flex flex-row w-full justify-around">
+        <form id="search-box" class="flex flex-col items-center justify-center bg-white p-5 w-full lg:w-half max-w-md h-full max-h-md rounded-lg shadow-md m-6">
+            <input id="songSearch" type="text" placeholder="Search song..." class="search-input form-input px-6 py-3 border border-gray-300 rounded-md text-center text-lg mb-5 w-4/5 focus:outline-none focus:ring-2 focus:ring-clifford focus:border-transparent">
+            <button type="submit" id="spotifySearchBtn" class="spotify-search-btn bg-clifford hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md text-lg">Search</button>
+        </form>
+        <div id="heroSection" class="flex w-full lg:w-5/12">
+    
+        </div>
+    </section>
+    <section id="resultsSection" class="flex flex-row w-full hidden">
+    </section>
+    <!-- <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+        <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 sm:flex sm:items-start">
+            <div class="mx-auto flex h-12 w-12 px-3 flex-shr solid-green-100 ink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                <i class="fa fa-music" aria-hidden="true"></i>
+            </div>
+            <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Song Title</h3>
+                <div class="mt-2">
+                    <p id="artistName" class="text-sm text-gray-500">Artist name</p>
+                    <hr>
+                    <p id="albumnName" class="text-sm text-gray-500">Albumn name</p>
+                    <hr>
+                    <p id="songInfo" class="text-sm text-gray-500">Wikipedia details-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo perspiciatis repudiandae maxime? Nihil voluptates voluptatum quisquam nobis tenetur magnam sed, nesciunt cum omnis doloremque laborum et, excepturi inventore perferendis necessitatibus!</p>
+                    <hr>
+                    <p id="discography" class="text-sm text-gray-500">Discography</p>
+                    <hr>
+                    <p id="similarArtists" class="text-sm text-gray-500">Similar Artists</p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+            <button type="button" class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 sm:ml-3 sm:w-auto">Close</button>
+            <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-green-100 px-3 py-2 text-sm font-semibold hover:bg-green-600 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Listen on Spotify</button>
+        </div>
+    </div> -->
+    <script src="./assets/js/wikipedia.js"></script>
+    <script src="./assets/js/spotify.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/logic.js"></script>
+</body>
+</html>
+
