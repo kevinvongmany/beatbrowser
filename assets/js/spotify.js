@@ -1,9 +1,9 @@
-const songPreviewEl = document.getElementById("song-preview");
-const volumeEl = document.getElementById("volume-slider");
-const searchBoxFormEl = document.getElementById("search-box");
+// const songPreviewEl = document.getElementById("song-preview");
+// const volumeEl = document.getElementById("volume-slider");
+// const searchBoxFormEl = document.getElementById("search-box");
 const searchInputEl = document.getElementById("songSearch");
-const heroSectionEl = document.getElementById("heroSection");
-const resultsSectionEl = document.getElementById("resultsSection");
+const heroSectionEl = document.getElementById("heroResult");
+const resultsSectionEl = document.getElementById("searchResults");
 const bodyDiv = document.body;
 
 function getToken(clientId, clientSecret) {
@@ -84,9 +84,9 @@ function renderSongResults(result) {
   const hrElement1 = document.createElement("hr");
   const hrElement2 = document.createElement("hr");
   const resultParentDiv = document.createElement("div");
-  resultParentDiv.setAttribute("class", "flex flex-col w-4/12 rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg")
+  resultParentDiv.setAttribute("class", "relative transform overflow-hidden rounded-lg text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg")
   const resultBodyDiv = document.createElement("div");
-  resultBodyDiv.setAttribute("class", "bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4 sm:flex sm:items-start");
+  resultBodyDiv.setAttribute("class", "flex items-center justify-center px-4 pb-4 pt-5 sm:p-6 sm:pb-4 sm:flex sm:items-start");
   const resultIconDiv = document.createElement("div");
   resultIconDiv.setAttribute("class", "mx-auto flex h-12 w-12 px-3 flex-shr solid-green-100 ink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10");
   const resultIcon = document.createElement("i");

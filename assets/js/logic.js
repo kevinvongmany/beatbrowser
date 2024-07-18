@@ -11,7 +11,7 @@ document.getElementById("search-box").addEventListener("submit", (e) => {
     if (query) {
         console.log(query);
         callSpotifyApi(query, limit=50, offset=0);
-        addNewValue(query);
+        // addNewValue(query);
         songSearchInput.value = ""; // Clear the input
         document.getElementById("seeMoreBtn").classList.remove("hidden"); // Display the "See More" button after search, innitially hidden in searchbutton.html
     }
