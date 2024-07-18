@@ -25,25 +25,25 @@ function displayPreviousSearches() {
 //         songResults.appendChild(songElement);
 //     }
 }
-function clearResults() {
-    sessionStorage.removeItem("songResults");
-    sessionStorage.removeItem("descriptions");
-    const resultsSection = document.getElementById("resultsSection");
-    const heroSection = document.getElementById("heroSection");
-    resultsSection.innerHTML = "";
-    heroSection.innerHTML = "";
-  }
+// function clearResults() {
+//     sessionStorage.removeItem("songResults");
+//     sessionStorage.removeItem("descriptions");
+//     const resultsSection = document.getElementById("resultsSection");
+//     const heroSection = document.getElementById("heroResult");
+//     resultsSection.innerHTML = "";
+//     heroSection.innerHTML = "";
+//   }
 
 document.addEventListener("DOMContentLoaded", displayPreviousSearches);
-document.getElementById("search-box").addEventListener("submit", (e) => {
-    e.preventDefault();
-    clearResults();
-    const newOptionInput = document.getElementById("songSearch");
-    const newOption = newOptionInput.value.trim();
-    if (newOption) {
-        console.log(newOption);
-        callSpotifyApi(newOption, limit=5, offset=0);
-        addNewValue(newOption);
-        newOptionInput.value = ""; // Clear the input
-    }
-});
+// document.getElementById("search-box").addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     clearResults();
+//     const newOptionInput = document.getElementById("songSearch");
+//     const newOption = newOptionInput.value.trim();
+//     if (newOption) {
+//         console.log(newOption);
+//         callSpotifyApi(newOption, limit=5, offset=0);
+//         addNewValue(newOption);
+//         newOptionInput.value = ""; // Clear the input
+//     }
+// });

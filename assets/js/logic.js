@@ -1,20 +1,43 @@
-const spotifyData = JSON.parse(response); // spotifyData to store sampledata from ./sampledata/spotify.js 
+// const spotifyData = JSON.parse(response); // spotifyData to store sampledata from ./sampledata/spotify.js 
 // console.log(spotifyData); // Display the spotifyData in the console
 let currentOffset = 0; // store the current offset value
 const initiallimit = 5; // store the initial limit value for first 5 songs to display
 const incrementlimit = 5; // store the increment limit value for next 5 songs to display
-
-// Event listener for the search buttonq
-document.getElementById("spotifySearchBtn").addEventListener("click", () => {
-    currentOffset = 0; // have the first offset value as 0
-    const query = document.getElementById("songSearch").value.trim();
+document.getElementById("search-box").addEventListener("submit", (e) => {
+    e.preventDefault();
+    clearResults();
+    const songSearchInput = document.getElementById("songSearch");
+    const query = songSearchInput.value.trim();
     if (query) {
-        const results = spotifyData.tracks.items.filter(song => song.name.toLowerCase().includes(query.toLowerCase())); // Filter the songs based on the search query and toLowerCase to handle user input of any case.
-        sessionStorage.setItem('searchResults', JSON.stringify(results));
-        displaySearchResults(true); 
+        console.log(query);
+        callSpotifyApi(query, limit=50, offset=0);
+        addNewValue(query);
+        songSearchInput.value = ""; // Clear the input
         document.getElementById("seeMoreBtn").classList.remove("hidden"); // Display the "See More" button after search, innitially hidden in searchbutton.html
     }
 });
+
+function clearResults() {
+    sessionStorage.removeItem("songResults");
+    sessionStorage.removeItem("descriptions");
+    const resultsSection = document.getElementById("searchResults");
+    const heroSection = document.getElementById("heroResult");
+    resultsSection.innerHTML = "";
+    heroSection.innerHTML = "";
+  }
+
+  
+// Event listener for the search button
+// document.getElementById("spotifySearchBtn").addEventListener("click", () => {
+//     currentOffset = 0; // have the first offset value as 0
+//     const query = document.getElementById("songSearch").value.trim();
+//     if (query) {
+//         const results = spotifyData.tracks.items.filter(song => song.name.toLowerCase().includes(query.toLowerCase())); // Filter the songs based on the search query and toLowerCase to handle user input of any case.
+//         sessionStorage.setItem('searchResults', JSON.stringify(results));
+//         displaySearchResults(true); 
+//         document.getElementById("seeMoreBtn").classList.remove("hidden"); // Display the "See More" button after search, innitially hidden in searchbutton.html
+//     }
+// });
 
 // Event listener for the see more button
 document.getElementById("seeMoreBtn").addEventListener("click", () => {
