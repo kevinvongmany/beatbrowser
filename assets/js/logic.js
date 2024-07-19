@@ -10,8 +10,7 @@ document.getElementById("search-box").addEventListener("submit", (e) => {
     const query = songSearchInput.value.trim();
     if (query) {
         console.log(query);
-        callSpotifyApi(query, limit=50, offset=0);
-        // addNewValue(query);
+        callSpotifyApi(query, limt =50, currentOffset);
         songSearchInput.value = ""; // Clear the input
         document.getElementById("seeMoreBtn").classList.remove("hidden"); // Display the "See More" button after search, innitially hidden in searchbutton.html
     }
@@ -24,9 +23,10 @@ function clearResults() {
     const heroSection = document.getElementById("heroResult");
     resultsSection.innerHTML = "";
     heroSection.innerHTML = "";
-  }
+    currentOffset = 0; // Reset the offset value (this is used to force clear the 10 songs displayed and display 10 new songs)
+}
 
-  
+
 // Event listener for the search button
 // document.getElementById("spotifySearchBtn").addEventListener("click", () => {
 //     currentOffset = 0; // have the first offset value as 0
@@ -54,7 +54,7 @@ function displaySearchResults(isInitial = false) {
 
     // Clear previous results if it's an initial search or if 10 songs are already displayed
     if (isInitial || currentOffset >= 10) {
-        songResults.innerHTML = ''; // Clear previous results for a new search or after 10 songs
+        songResults.innerHTML = ''; // Clear previous results for a new search or after displaying 10 songs
     }
 
     const results = JSON.parse(sessionStorage.getItem('searchResults')) || [];
@@ -68,56 +68,57 @@ function displaySearchResults(isInitial = false) {
     }
 
     const end = currentOffset + limit; // Calculate the end value to display the songs
-    let songsToDisplay = [];
-
-    // Slice the results array to get the songs to display
-    for (let i = currentOffset; i < end && i < results.length; i++) {
-        songsToDisplay.push(results[i]);
+    const songsToDisplay = results.slice(currentOffset, end); // Slice the results array to get the songs to display
+    // Use a traditional for loop to process and render songs
+    for (let i = 0; i < songsToDisplay.length; i++) {
+        const song = songsToDisplay[i];
+        renderSongResults(song); // Use renderSongResults from spotify.js
     }
-
-    if (songsToDisplay.length > 0) {
-        songsToDisplay.forEach(song => {
-            const songElement = createSongElement(song);
-            songResults.appendChild(songElement);
-        });
-    } else {
-        document.getElementById("seeMoreBtn").classList.add("hidden");
-    }
-
-    // Hide the "See More" button if no more songs to display
+     // Check and hide the "See More" button if no more songs to display
     if (currentOffset + limit >= results.length) {
         document.getElementById("seeMoreBtn").classList.add("hidden");
+    } else {
+        document.getElementById("seeMoreBtn").classList.remove("hidden"); // Show button if there are more songs
     }
+
+    // Update the current offset
+    currentOffset += limit;
 }
 
+// Event listener for the "See More" button
+document.getElementById("seeMoreBtn").addEventListener("click", () => {
+    displaySearchResults(); // Display more songs when button is clicked
+});
+
 // This function used to create the song element to display in the UI 
-function createSongElement(track){
-    const songElement = document.createElement("div");
-    songElement.className = "track";
-    // Song title
-    const songTitle = document.createElement("h3");
-    songTitle.textContent = track.name; 
-    songElement.appendChild(songTitle);
-    // Artist name
-    const artists = document.createElement("p");
-    artists.textContent = `Artist: ${track.artists[0].name}`;
-    artists.className = "artist";
-    songElement.appendChild(artists);
-    // Album name
-    const album = document.createElement("p");
-    album.textContent = `Album: ${track.album.name}`;
-    album.className = "album";
-    songElement.appendChild(album);
-    // Preview URL
-    const previewUrl = document.createElement("a");
-    previewUrl.textContent = "Preview";
-    previewUrl.href = track.preview_url;
-    previewUrl.target = "_blank";
-    songElement.appendChild(previewUrl);
-    return songElement;
-}
+// function createSongElement(track){
+//     const songElement = document.createElement("div");
+//     songElement.className = "track";
+//     // Song title
+//     const songTitle = document.createElement("h3");
+//     songTitle.textContent = track.name; 
+//     songElement.appendChild(songTitle);
+//     // Artist name
+//     const artists = document.createElement("p");
+//     artists.textContent = `Artist: ${track.artists[0].name}`;
+//     artists.className = "artist";
+//     songElement.appendChild(artists);
+//     // Album name
+//     const album = document.createElement("p");
+//     album.textContent = `Album: ${track.album.name}`;
+//     album.className = "album";
+//     songElement.appendChild(album);
+//     // Preview URL
+//     const previewUrl = document.createElement("a");
+//     previewUrl.textContent = "Preview";
+//     previewUrl.href = track.preview_url;
+//     previewUrl.target = "_blank";
+//     songElement.appendChild(previewUrl);
+//     return songElement;
+// }
 
 // Hide the see more button on initial load
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("seeMoreBtn").classList.add("hidden");
 });
+
