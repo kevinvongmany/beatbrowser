@@ -1,16 +1,22 @@
 // const spotifyData = JSON.parse(response); // spotifyData to store sampledata from ./sampledata/spotify.js 
 // console.log(spotifyData); // Display the spotifyData in the console
-let currentOffset = 0; // store the current offset value
-const initiallimit = 5; // store the initial limit value for first 5 songs to display
-const incrementlimit = 5; // store the increment limit value for next 5 songs to display
+let currentOffset = 1; // store the current offset value
+const initialLimit = 50; // store the initial limit value for first 5 songs to display
+const incrementLimit = 4; // store the increment limit value for next 5 songs to display
+const searchHistory = document.getElementById("dropDownListElements");
+
 document.getElementById("search-box").addEventListener("submit", (e) => {
     e.preventDefault();
     clearResults();
     const songSearchInput = document.getElementById("songSearch");
     const query = songSearchInput.value.trim();
     if (query) {
-        console.log(query);
-        callSpotifyApi(query, limt =50, currentOffset);
+        const history = JSON.parse(localStorage.getItem("songHistory")) || [];
+        if (!history.includes(query)) {
+            history.push(query);
+        }
+        localStorage.setItem("songHistory", JSON.stringify(history));
+        callSpotifyApi(query, initialLimit, 0);
         songSearchInput.value = ""; // Clear the input
         document.getElementById("seeMoreBtn").classList.remove("hidden"); // Display the "See More" button after search, innitially hidden in searchbutton.html
     }
@@ -23,9 +29,18 @@ function clearResults() {
     const heroSection = document.getElementById("heroResult");
     resultsSection.innerHTML = "";
     heroSection.innerHTML = "";
-    currentOffset = 0; // Reset the offset value (this is used to force clear the 10 songs displayed and display 10 new songs)
+    currentOffset = 1; // Reset the offset value (this is used to force clear the 10 songs displayed and display 10 new songs)
 }
 
+function renderPreviousSearches() {
+    const history = JSON.parse(localStorage.getItem("songHistory")) || [];
+    for (let i = 0; i < history.length; i++) {
+        const songElement = document.createElement("option");
+        songElement.textContent = history[i];
+        songElement.className = "song";
+        searchHistory.appendChild(songElement);
+    }
+}
 
 // Event listener for the search button
 // document.getElementById("spotifySearchBtn").addEventListener("click", () => {
@@ -41,12 +56,21 @@ function clearResults() {
 
 // Event listener for the see more button
 document.getElementById("seeMoreBtn").addEventListener("click", () => {
-    if (currentOffset < 10) {
-        currentOffset = currentOffset + incrementlimit; // Increment the offset value as the user clicks on the "See More" button to display 5 more results
-    } else {
-        currentOffset = currentOffset + initiallimit;  // Add 10 more songs if more than 10 songs are displayed
+    currentOffset += incrementLimit; // Increment the offset value as the user clicks on the "See More" button to display 5 more results
+    for (i = currentOffset; i < currentOffset + incrementLimit; i++) {
+        console.log(`song-result-card-${i}`)
+        const resultDiv = document.getElementById(`song-result-card-${i}`);
+        resultDiv.classList.remove("hidden");
     }
-    displaySearchResults();
+    if (currentOffset + incrementLimit >= 50) {
+        document.getElementById("seeMoreBtn").classList.add("hidden");
+    }
+    // if (currentOffset < 10) {
+    //     currentOffset = currentOffset + incrementLimit; // Increment the offset value as the user clicks on the "See More" button to display 5 more results
+    // } else {
+    //     currentOffset = currentOffset + initialLimit;  // Add 10 more songs if more than 10 songs are displayed
+    // }
+    // displaySearchResults();
 });
 
 function displaySearchResults(isInitial = false) {
@@ -62,9 +86,9 @@ function displaySearchResults(isInitial = false) {
     // Determine the limit of songs to display based on whether it's an initial search or not
     let limit;
     if (isInitial) {
-        limit = initiallimit; // Use initial limit of songs
+        limit = initialLimit; // Use initial limit of songs
     } else {
-        limit = incrementlimit; // Use increment limit to show more songs
+        limit = incrementLimit; // Use increment limit to show more songs
     }
 
     const end = currentOffset + limit; // Calculate the end value to display the songs
@@ -86,9 +110,9 @@ function displaySearchResults(isInitial = false) {
 }
 
 // Event listener for the "See More" button
-document.getElementById("seeMoreBtn").addEventListener("click", () => {
-    displaySearchResults(); // Display more songs when button is clicked
-});
+// document.getElementById("seeMoreBtn").addEventListener("click", () => {
+//     displaySearchResults(); // Display more songs when button is clicked
+// });
 
 // This function used to create the song element to display in the UI 
 // function createSongElement(track){
@@ -120,5 +144,13 @@ document.getElementById("seeMoreBtn").addEventListener("click", () => {
 // Hide the see more button on initial load
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("seeMoreBtn").classList.add("hidden");
+    renderPreviousSearches();
 });
 
+// 
+searchHistory.addEventListener("change", (e) => {
+    const query = e.target.value;
+    clearResults();
+    callSpotifyApi(query, initialLimit, 0);
+    document.getElementById("seeMoreBtn").classList.remove("hidden");
+});
