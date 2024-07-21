@@ -141,6 +141,24 @@ function displaySearchResults(isInitial = false) {
 //     return songElement;
 // }
 
+// loop through all of the parent-div classes
+// assign an event listener of click to each of the parent-div classes
+// grab the data spotify_id from the event
+// find the data in sessionStorage.songResults and sessionStorage.descriptions
+// Update Modal the modal with that data
+// 
+
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("song")) {
+        const songName = e.target.textContent;
+        const song = JSON.parse(sessionStorage.getItem("songResults")).find(song => song.name === songName);
+        const modal = document.getElementById("modal");
+        modal.innerHTML = "";
+        modal.appendChild(createSongElement(song));
+        modal.classList.remove("hidden");
+    }
+});
+
 // Hide the see more button on initial load
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("seeMoreBtn").classList.add("hidden");
