@@ -16,6 +16,7 @@ document.getElementById("search-box").addEventListener("submit", (e) => {
             history.push(query);
         }
         localStorage.setItem("songHistory", JSON.stringify(history));
+        renderPreviousSearches();
         callSpotifyApi(query, initialLimit, 0);
         songSearchInput.value = ""; // Clear the input
         document.getElementById("seeMoreBtn").classList.remove("hidden"); // Display the "See More" button after search, innitially hidden in searchbutton.html
@@ -34,6 +35,7 @@ function clearResults() {
 
 function renderPreviousSearches() {
     const history = JSON.parse(localStorage.getItem("songHistory")) || [];
+    searchHistory.innerHTML = "";
     for (let i = 0; i < history.length; i++) {
         const songElement = document.createElement("option");
         songElement.textContent = history[i];
@@ -148,16 +150,6 @@ function displaySearchResults(isInitial = false) {
 // Update Modal the modal with that data
 // 
 
-document.addEventListener("click", (e) => {
-    if (e.target.classList.contains("song")) {
-        const songName = e.target.textContent;
-        const song = JSON.parse(sessionStorage.getItem("songResults")).find(song => song.name === songName);
-        const modal = document.getElementById("modal");
-        modal.innerHTML = "";
-        modal.appendChild(createSongElement(song));
-        modal.classList.remove("hidden");
-    }
-});
 
 // Hide the see more button on initial load
 document.addEventListener("DOMContentLoaded", () => {
