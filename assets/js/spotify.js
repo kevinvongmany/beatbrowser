@@ -111,6 +111,7 @@ function renderHeroSection(heroObj) {
   const hrElement2 = document.createElement("hr");
   const hrElement3 = document.createElement("hr");
   heroParentDiv.setAttribute("class", "parent-result relative w-full transform rounded-lg bg-green-200 text-left shadow-xl min-w-96 min-h-72 sm:my-8 sm:w-full sm:max-w-lg")
+  heroParentDiv.dataset.spotify_id = heroObj.spotify_id;
   heroBodyDiv.setAttribute("class", "flex w-full items-center justify-center px-4 pb-4 pt-5 sm:p-6 sm:pb-4 sm:flex sm:items-start");
   heroIconDiv.setAttribute("class", "mx-auto flex h-12 w-12 flex-shr solid-green-100 ink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10");
   heroIcon.setAttribute("class", "fa fa-music");
@@ -158,10 +159,10 @@ function renderSongResults(resultObj, hidden=false) {
   const hrElement1 = document.createElement("hr");
   const hrElement2 = document.createElement("hr");
   const hrElement3 = document.createElement("hr");
-  resultParentCardDiv.setAttribute("class", "flex items-center justify-center bg-none p-5 w-full lg:w-1/2 h-full min-h-96 rounded-lg p-3")
+  resultParentCardDiv.setAttribute("class", "parent-result flex items-center justify-center bg-none p-5 w-full lg:w-1/2 h-full min-h-96 rounded-lg p-3")
   resultParentCardDiv.dataset.spotify_id = resultObj.spotify_id;
   resultParentCardDiv.id = `song-result-card-${resultObj.id}`;
-  resultParentDiv.setAttribute("class", "parent-result flex w-full transform rounded-lg bg-white text-left shadow-xl sm:my-8  min-w-96 min-h-72 sm:w-full sm:max-w-lg")
+  resultParentDiv.setAttribute("class", "flex w-full transform rounded-lg bg-white text-left shadow-xl sm:my-8  min-w-96 min-h-72 sm:w-full sm:max-w-lg")
   resultBodyDiv.setAttribute("class", "flex w-full items-center justify-center px-4 pb-4 pt-5 sm:p-6 sm:pb-4 sm:flex sm:items-start");
   resultIconDiv.setAttribute("class", "mx-auto flex h-12 w-12 flex-shr solid-green-100 ink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10");
   resultIcon.setAttribute("class", "fa fa-music");
@@ -268,8 +269,9 @@ function loadSong(trackUrl){
 
 
   
-function toggleSong(e, song) {
-  e.preventDefault();
+function toggleSong(song) {
+  // e.preventDefault();
+  console.log(song);
   if (song.paused) {
     song.play();
   } else {
