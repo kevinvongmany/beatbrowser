@@ -163,7 +163,7 @@ function renderSongResults(resultObj, hidden=false) {
   resultParentCardDiv.dataset.spotify_id = resultObj.spotify_id;
   resultParentCardDiv.id = `song-result-card-${resultObj.id}`;
   resultParentDiv.setAttribute("class", "flex w-full transform rounded-lg bg-white text-left shadow-xl sm:my-8  min-w-96 min-h-72 sm:w-full sm:max-w-lg")
-  resultBodyDiv.setAttribute("class", "flex w-full items-center justify-center px-4 pb-4 pt-5 sm:p-6 sm:pb-4 sm:flex sm:items-start");
+  resultBodyDiv.setAttribute("class", "flex w-full items-center justify-center px-4 pb-4 pt-5 items-start sm:p-6 sm:pb-4 sm:flex sm:items-start");
   resultIconDiv.setAttribute("class", "mx-auto flex h-12 w-12 flex-shr solid-green-100 ink-0 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10");
   resultIcon.setAttribute("class", "fa fa-music");
   resultDiv.setAttribute("class", "mt-3 text-center w-full sm:ml-4 sm:mt-0 sm:text-left");
@@ -264,10 +264,21 @@ function songResults() {
 }
 
 function loadSong(trackUrl){
-  return new Audio(trackUrl)
+  console.log("Loading in a song");
+  const song = document.getElementById('audio');
+  song.id = 'audio'
+  song.volume = 0.2;
+  song.src = trackUrl;
+  song.classList.add("hidden");
+  console.log(song);
 }
 
+function stopSong(song) {
+  console.log(song);
+  song.pause();
+  song.currentTime = 0;
 
+}
   
 function toggleSong(song) {
   // e.preventDefault();
@@ -275,10 +286,8 @@ function toggleSong(song) {
   if (song.paused) {
     song.play();
   } else {
-    song.currentTime = 0;
-    song.pause()
+    stopSong(song);
   }
-  console.log(song.paused)
 
 }
 

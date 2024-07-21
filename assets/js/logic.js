@@ -4,6 +4,7 @@ let currentOffset = 1; // store the current offset value
 const initialLimit = 50; // store the initial limit value for first 5 songs to display
 const incrementLimit = 4; // store the increment limit value for next 5 songs to display
 const searchHistory = document.getElementById("dropDownListElements");
+const songElement = document.getElementById('audio'); 
 
 document.getElementById("search-box").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -36,6 +37,11 @@ function clearResults() {
 function renderPreviousSearches() {
     const history = JSON.parse(localStorage.getItem("songHistory")) || [];
     searchHistory.innerHTML = "";
+    defaultOption = document.createElement("option");
+    defaultOption.textContent = "Select to view previous searches";
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    searchHistory.appendChild(defaultOption);
     for (let i = 0; i < history.length; i++) {
         const songElement = document.createElement("option");
         songElement.textContent = history[i];
@@ -175,21 +181,31 @@ function showModal(song, description) {
     document.getElementById('artistName').textContent = `Artist: ${song.artist}`;
     document.getElementById('albumName').textContent = `Album: ${song.album}`;
     document.getElementById('songInfo').textContent = description;
-    document.getElementById('discography').textContent = 'Discography';
-    document.getElementById('similarArtists').textContent = 'Similar Artists';
     const volumeEl = document.getElementById('volume');
-
-    const previewSong = loadSong(song.preview);
-    previewSong.currentTime = 0;
-    previewSong.pause();
-    volumeEl.addEventListener("input", () => {
-    let volumeValue = volumeEl.value;
-    previewSong.volume = volumeValue / 100;
-    });
-    console.log(previewSong);
-    document.getElementById('listenOnSpotify').addEventListener('click', () => {
-        toggleSong(previewSong);
-    });
+    console.log("Song preview: ");
+    console.log(song.preview);
+    if (song.preview) {
+        document.getElementById('listenOnSpotify').classList.remove('hidden');
+        document.getElementById('volume').classList.remove('hidden');
+        document.getElementById('volume-icon').classList.remove('hidden');
+        loadSong(song.preview);
+        console.log("Show Modal song element: ");
+        console.log(songElement);
+        if (songElement) {
+            volumeEl.addEventListener("input", () => {
+                let volumeValue = volumeEl.value;
+                songElement.volume = volumeValue / 100;
+            });
+            console.log(songElement);
+            document.getElementById('listenOnSpotify').addEventListener('click', () => {
+                toggleSong(songElement);
+            });
+        }
+    } else {
+        document.getElementById('listenOnSpotify').classList.add('hidden');
+        document.getElementById('volume').classList.add('hidden');
+        document.getElementById('volume-icon').classList.add('hidden');
+    }
     console.log("Opening Modal"); 
     const modal = document.getElementById('modal');
     console.log(modal);
@@ -198,9 +214,10 @@ function showModal(song, description) {
 }
 
 function closeModal() {
+    
+    stopSong(songElement);
     console.log("Closing Modal"); 
     const modal = document.getElementById('modal');
-    console.log(modal);
     modal.style.display = 'none';
     modal.setAttribute('aria-hidden', 'true');
 }
