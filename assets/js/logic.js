@@ -149,7 +149,61 @@ function displaySearchResults(isInitial = false) {
 // find the data in sessionStorage.songResults and sessionStorage.descriptions
 // Update Modal the modal with that data
 // 
+document.addEventListener('DOMContentLoaded', () => {
+    // Event delegation to make song cards clickable
+    document.body.addEventListener('click', function(event) {
+    const songCard = event.target.closest('.parent-result');
+    if (songCard) {
+        console.log('Song card clicked:', songCard); // Debugging line
+        const songId = songCard.dataset.spotify_id;
+        const songResults = JSON.parse(sessionStorage.getItem('songResults'));
+        const songDescriptions = JSON.parse(sessionStorage.getItem('descriptions'));
+        const songInfo = songResults.find(song => song.spotify_id === songId);
+        console.log(songId);
+        const songDescription = songDescriptions[songId] ? songDescriptions[songId].long : 'Description not available';
+        console.log(songDescription);
+        showModal(songInfo, songDescription);
+    }
+});
+    // console.log(document.getElementById('modal-close'));
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+});
 
+function showModal(song, description) {
+    console.log('Show modal for song:', song); // Debugging line
+    document.getElementById('modal-title').textContent = song.name;
+    document.getElementById('artistName').textContent = `Artist: ${song.artist}`;
+    document.getElementById('albumName').textContent = `Album: ${song.album}`;
+    document.getElementById('songInfo').textContent = description;
+    document.getElementById('discography').textContent = 'Discography';
+    document.getElementById('similarArtists').textContent = 'Similar Artists';
+    const volumeEl = document.getElementById('volume');
+
+    const previewSong = loadSong(song.preview);
+    previewSong.currentTime = 0;
+    previewSong.pause();
+    volumeEl.addEventListener("input", () => {
+    let volumeValue = volumeEl.value;
+    previewSong.volume = volumeValue / 100;
+    });
+    console.log(previewSong);
+    document.getElementById('listenOnSpotify').addEventListener('click', () => {
+        toggleSong(previewSong);
+    });
+    console.log("Opening Modal"); 
+    const modal = document.getElementById('modal');
+    console.log(modal);
+    modal.style.display = 'block';
+    modal.setAttribute('aria-hidden', 'false');
+}
+
+function closeModal() {
+    console.log("Closing Modal"); 
+    const modal = document.getElementById('modal');
+    console.log(modal);
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+}
 
 // Hide the see more button on initial load
 document.addEventListener("DOMContentLoaded", () => {
