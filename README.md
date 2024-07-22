@@ -13,21 +13,38 @@ BeatBrowser solves this problem of fragmented music discovery experiences by com
 
 During the development of BeatBrowser, we learned how to effectively integrate multiple APIs to create a cohesive user experience. Additionally, we gained valuable insights into handling asynchronous data fetching, managing state in a web application, and designing intuitive user interfaces.
 
+![Landing Page](/assets/images/landingPage.png)
+![Search Results](/assets/images/searchResults.png)
+![Description Modal](/assets/images/modal.png)
 
-
-## Table of Contents (Optional)
-
-<!-- If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license) -->
 
 ## Installation
 
 Search for Beatbrowser in your web browser or launch the page from the repository!
 
+[BeatBrowser](https://kevinvongmany.github.io/beatbrowser/)
+
+## Technologies Utilised
+
+ |API|Documentation|Repository|
+|---|---|---|```
+
+|[Tailwind CDN](https://cdn.tailwindcss.com/) | [Docs](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
+
+
+|[FontAwesome 5.8.1](https://fontawesome.com/) | [Docs](https://docs.fontawesome.com/) | https://github.com/FortAwesome/Font-Awesome/ |
+
+
+|[jQuery 3.4.1](https://jquery.com/) | [Docs](https://api.jquery.com/) | https://github.com/jquery/jquery |
+
+
+|[jQuery UI 1.13.1](https://jqueryui.com/) | [Docs](https://api.jqueryui.com/) | https://github.com/jquery/jquery-ui |
+
+
+|[Day.js 1.11.3](https://day.js.org/en/) | [Docs](https://day.js.org/docs/en/installation/browser) | https://github.com/iamkun/dayjs/ |
+
+
+```
 
 ## Usage
 
@@ -51,11 +68,6 @@ Cameron Beattie  https://github.com/Cbeattie97
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Badges
-
-<!-- ![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-
-Badges aren't necessary, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time. -->
 
 ## Features
 
@@ -66,10 +78,6 @@ Badges aren't necessary, but they demonstrate street cred. Badges let other deve
 ## How to Contribute
 
 We welcome contributions to BeatBrowser! If you have suggestions for new features, improvements, or bug fixes, please open an issue or submit a pull request.
-
-## Tests
-
-<!-- Go the extra mile and write tests for your application. Then provide examples on how to run them here. -->
 
 ---
 
