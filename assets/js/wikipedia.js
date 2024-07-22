@@ -10,44 +10,31 @@ const apiParams = {
   explaintext: true, // Return the extract in plain text, not HTML.
 };
 
-async function wikiSearchQuery(searchTerm, elementIndex, lastSearch=false) {
+async function wikiSearchQuery(searchTerm, elementIndex, lastSearch = false) {
   apiParams.titles = searchTerm;
   let url = new URL(wikipediaApiUrl);
   url.search = new URLSearchParams(apiParams).toString();
 
-  const res = await fetch(url)
-  const result = await res.json()
-  const descriptions = JSON.parse(sessionStorage.getItem("descriptions")) || {}
+  const res = await fetch(url);
+  const result = await res.json();
+  const descriptions = JSON.parse(sessionStorage.getItem("descriptions")) || {};
   if (!result.query.pages[-1] && !descriptions.hasOwnProperty(elementIndex)) {
     const longDescript = Object.values(result.query.pages)[0].extract;
     const shortDescript = getFirstSentence(longDescript);
-    assignToResults(
-      longDescript,
-      shortDescript,
-      elementIndex
-    );
+    assignToResults(longDescript, shortDescript, elementIndex);
   } else if (lastSearch) {
     assignToResults(
-        "No description available",
-        "No description available",
-        elementIndex
-      );
+      "No description available",
+      "No description available",
+      elementIndex
+    );
   }
   return JSON.parse(sessionStorage.getItem("descriptions"));
-    // })
-    // .catch((error) => {
-    //   console.error("Error:", error);
-    //   assignToResults(
-    //     "No description available",
-    //     "No description available",
-    //     elementIndex
-    //   );
-    // });
 }
 
 function getFirstSentence(inputString) {
   try {
-    const sentences = inputString.split("."); // Split the string into words
+    const sentences = inputString.split(".");
     return `${sentences[0]}...`;
   } catch (error) {
     return "No description available";
