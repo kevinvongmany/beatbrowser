@@ -26,23 +26,12 @@ Search for Beatbrowser in your web browser or launch the page from the repositor
 
 ## Technologies Utilised
 
- |API|Documentation|Repository|
-|---|---|---|```
-
-|[Tailwind CDN](https://cdn.tailwindcss.com/) | [Docs](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
-
-
+|API|Documentation|Repository|
+|---|---|---|
+|[Tailwind CDN](https://cdn.tailwindcss.com/) | [Docs](https://getbootstrap.com/docs/5.1/getting-started/introduction/) | https://github.com/tailwindlabs/tailwindcss 
 |[FontAwesome 5.8.1](https://fontawesome.com/) | [Docs](https://docs.fontawesome.com/) | https://github.com/FortAwesome/Font-Awesome/ |
-
-
-|[jQuery 3.4.1](https://jquery.com/) | [Docs](https://api.jquery.com/) | https://github.com/jquery/jquery |
-
-
-|[jQuery UI 1.13.1](https://jqueryui.com/) | [Docs](https://api.jqueryui.com/) | https://github.com/jquery/jquery-ui |
-
-
-|[Day.js 1.11.3](https://day.js.org/en/) | [Docs](https://day.js.org/docs/en/installation/browser) | https://github.com/iamkun/dayjs/ |
-
+|[Wikipedia (MediaWiki)](https://www.mediawiki.org/wiki/MediaWiki) | [Docs](https://www.mediawiki.org/wiki/API:Main_page) | 
+|[Spotify for Developers \| Web API](https://developer.spotify.com/) | [Docs](https://developer.spotify.com/documentation/web-api) | 
 
 
 ## Usage
