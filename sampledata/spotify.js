@@ -1,4 +1,4 @@
-{
+const response = `{
     "tracks": {
         "href": "https://api.spotify.com/v1/search?query=Black+Parade&type=track&locale=en-AU%2Cen%3Bq%3D0.9&offset=0&limit=50",
         "items": [
@@ -21057,4 +21057,4 @@
         "previous": null,
         "total": 862
     }
-}
+}`

@@ -1,7 +1,7 @@
 # Beatbrowser
 Welcome to **BeatBrowser**, your ultimate music discovery platform! Whether you're searching for a specific song, artist, or album, our intuitive platform leverages the power of the Spotify API to deliver the top 5 results tailored to your query.
 
-Deployed application URL: 
+Deployed application URL: https://kevinvongmany.github.io/beatbrowser
 
 ## Description
 

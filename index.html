@@ -3,18 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind Config Script below, see https://tailwindcss.com/docs/configuration for more info -->
+    <script> 
+        tailwind.config = {
+        theme: {
+            extend: {
+            colors: {
+                clifford: '#da373d',
+            }
+            }
+        }
+        }
+    </script>
+    <title >BeatBrowser</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <label for="dropDownListElements">Previous Song searched:</label>
-    <select id="dropDownListElements"></select> 
-    <!--The for attribute in the <label> tag should match the id of the associated form element. 
-    In this case, it should reference the id of the <select> element -->
-    <input type="text" id="newOptionInput" placeholder="New option">
-    <button id="addSongBtn">Add Songs</button>
-    <script src="./assets/js/script.js"></script>
+<body class="bg-gray-600 row flex flex-wrap w-full justify-around items-center">
+        <header class="flex border-black bg-gradient-to-r from-green-300 border-b-2 to-orange-200 mx-auto min justify-center items-center px-8 py-2 w-full">
+            
+            <h1 class="text-black-500 text-5xl montserrat text-center mx-auto select-none " ><span class="fa-solid fa-headphones text-3xl"></span> BeatBrowser <span class="fa-solid fa-headphones text-3xl"></span></h1>
+            
+        </header>
+        
+    <main class="flex flex-col w-full lg:w-half justify-around items-center"> 
+        <div id="BBLogo">
+             <!-- <h1 class="mx-auto text-black-500 text-5xl font-black">BeatBrowser</h1> 
+             <img src="assets/images/BBLogo.png" alt="BeatBrowser Logo">   -->
+        </div>
+        <div class="flex flex-col items-center justify-center bg-gray-200 p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6">
+            <form id="search-box" class="flex flex-col items-center justify-center">
+                <input id="songSearch" type="text" placeholder="Search song..." autocomplete="off" class="search-input form-input px-6 py-3 border border-gray-300 rounded-md text-center text-lg mb-5 w-4/5 focus:outline-none focus:ring-2 focus:ring-clifford focus:border-transparent">
+                <button id="spotifySearchBtn" class="spotify-search-btn mt-3 inline-flex w-full justify-center rounded-md bg-green-300 px-3 py-2 text-sm font-semibold hover:bg-green-600 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Search</button>
+            </form>
+            <div id="songResults" class="song-results"></div>
+        </div>
+        <div class="flex flex-col items-center w-full max-w-md bg-blue-500 rounded pb-1 px-1 my-4 shadow-md">
+            <label for="dropDownListElements" class="mb-3 pt-3 pb-2 px-3 text-2xl text-white">History</label>
+            <select id="dropDownListElements" class="min-w-32 w-full max-w-md border-black rounded" name="history">
+                <option value="none" selected disabled hidden>See your history</option>
+            </select> 
+        </div>
+        
+    </main>
+    <section id="heroResult" class="flex w-full justify-center">
+    </section>
 
-    <script src="/assets/js/logic.js"></script>
+    <section id="searchResults" class="flex flex-wrap w-full lg:w-half justify-between items-center">
+        
+    </section>
+
+    <!--Pop up Modal-->
+    <div class="relative z-10 hidden ease-in duration-200 ease-out" id="modal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                    <div class="bg-white min-w-full px-4 pb-4 pt-5 sm:p-6 sm:pb-4 sm:flex sm:items-start">
+                        <div class="mx-auto flex h-12 w-24 items-center justify-center rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <i class="fa fa-music" aria-hidden="true"></i>
+                        </div>
+                        <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                        <h3 class="text-lg font-semibold leading-6 text-gray-900" id="modal-title">Song Title</h3>
+                            <div class="mt-2">
+                                <p id="artistName" class="text-sm text-gray-500">Artist name</p>
+                                <hr>
+                                <p id="albumName" class="text-sm text-gray-500">Album name</p>
+                                <hr>
+                                <p id="songInfo" class="text-sm text-gray-500">Wikipedia details</p>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 text-center items-center">   
+                        <button type="button" id="modal-close" class="modal-close inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 sm:ml-3 sm:w-auto">Close</button>
+                        <button type="button" id="listenOnSpotify" class="inline-flex w-full justify-center rounded-md bg-green-100 px-3 py-2 text-sm font-semibold hover:bg-green-600 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Listen on Spotify</button>
+                        <input type="range" id="volume" class="mr-3" min="0" max="100" value="10" step="5"></input>
+                        <i class="fa-solid fa-volume-high mr-3 h-full" id="volume-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="seeMoreBtn" class="hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded">
+        See More
+    </button>
+    <audio id="audio" class="hidden">
+    </audio>
+    <script src="./assets/js/wikipedia.js"></script>
+    <script src="./assets/js/spotify.js"></script>
+    <script src="./assets/js/logic.js"></script>
 </body>
 </html>
