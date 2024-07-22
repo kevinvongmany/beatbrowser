@@ -93,7 +93,7 @@ function renderHeroSection(heroObj) {
   const hrElement3 = document.createElement("hr");
   heroParentDiv.setAttribute(
     "class",
-    "parent-result relative w-full transform rounded-lg bg-green-200 text-left shadow-xl min-w-96 min-h-72 sm:my-8 sm:w-full sm:max-w-lg"
+    "parent-result relative w-full transform rounded-lg light-pink-bg text-left shadow-xl min-w-96 min-h-72 sm:my-8 sm:w-full sm:max-w-lg"
   );
   heroParentDiv.dataset.spotify_id = heroObj.spotify_id;
   heroBodyDiv.setAttribute(
@@ -102,7 +102,7 @@ function renderHeroSection(heroObj) {
   );
   heroIconDiv.setAttribute(
     "class",
-    "mx-auto flex h-12 w-12 flex-shr solid-green-100 ink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10"
+    "mx-auto flex h-12 w-12 flex-shr solid-green-100 ink-0 items-center justify-center rounded-full bg-white sm:mx-0 sm:h-10 sm:w-10"
   );
   heroIcon.setAttribute("class", "fa fa-music");
   heroDiv.setAttribute(

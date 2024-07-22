@@ -23,28 +23,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="bg-gray-600 row flex flex-wrap w-full justify-around items-center">
-        <header class="flex border-black bg-gradient-to-r from-green-300 border-b-2 to-orange-200 mx-auto min justify-center items-center px-8 py-2 w-full">
-            
-            <h1 class="text-black-500 text-5xl montserrat text-center mx-auto select-none " ><span class="fa-solid fa-headphones text-3xl"></span> BeatBrowser <span class="fa-solid fa-headphones text-3xl"></span></h1>
+<body class="dark-lime-bg row flex flex-wrap w-full justify-around items-center">
+        <header class="flex bg-gradient-to-r min justify-between items-center text-white px-8 py-2 w-full">
+            <h1 class="text-black-500 text-5xl montserrat select-none " ><span class="fa-solid fa-headphones text-3xl"></span> BeatBrowser</span></h1>
+            <a href="https://github.com/kevinvongmany/beatbrowser" target="_blank" class="bg-white rounded">
+                <img src="assets/icons/github.svg" width="30px"></icon>
+            </a>
             
         </header>
         
     <main class="flex flex-col w-full lg:w-half justify-around items-center"> 
-        <div id="BBLogo">
-             <!-- <h1 class="mx-auto text-black-500 text-5xl font-black">BeatBrowser</h1> 
-             <img src="assets/images/BBLogo.png" alt="BeatBrowser Logo">   -->
-        </div>
-        <div class="flex flex-col items-center justify-center bg-gray-200 p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6">
-            <form id="search-box" class="flex flex-col items-center justify-center">
-                <input id="songSearch" type="text" placeholder="Search song..." autocomplete="off" class="search-input form-input px-6 py-3 border border-gray-300 rounded-md text-center text-lg mb-5 w-4/5 focus:outline-none focus:ring-2 focus:ring-clifford focus:border-transparent">
-                <button id="spotifySearchBtn" class="spotify-search-btn mt-3 inline-flex w-full justify-center rounded-md bg-green-300 px-3 py-2 text-sm font-semibold hover:bg-green-600 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Search</button>
+        <div class="flex flex-col items-center justify-center lime-bg p-5 w-full max-w-md h-full max-h-md rounded-lg shadow-md m-6">
+            <form id="search-box" class="flex flex-col items-center justify-center w-full">
+                <input id="songSearch" type="text" placeholder="Search song..." autocomplete="off" class="search-input form-input px-6 py-3 border border-gray-300 rounded-md text-center text-lg mb-5 w-full focus:outline-none focus:ring-2 focus:ring-clifford focus:border-transparent">
+                <button id="spotifySearchBtn" class="spotify-search-btn mt-3 inline-flex w-full justify-center rounded-md pink-bg px-3 py-2 text-sm w-2/5 font-semibold text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0">Search</button>
             </form>
             <div id="songResults" class="song-results"></div>
         </div>
-        <div class="flex flex-col items-center w-full max-w-md bg-blue-500 rounded pb-1 px-1 my-4 shadow-md">
-            <label for="dropDownListElements" class="mb-3 pt-3 pb-2 px-3 text-2xl text-white">History</label>
-            <select id="dropDownListElements" class="min-w-32 w-full max-w-md border-black rounded" name="history">
+        <div class="flex flex-col items-center w-full max-w-md pale-green-bg rounded py-4 px-1 my-5 shadow-md">
+            <label for="dropDownListElements" class="mb-3 pt-3 pb-2 px-3 text-2xl text-gray-700">History</label>
+            <select id="dropDownListElements" class="min-w-32 mb-3 w-4/5 max-w-md border-black rounded" name="history">
                 <option value="none" selected disabled hidden>See your history</option>
             </select> 
         </div>
