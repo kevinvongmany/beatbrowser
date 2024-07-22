@@ -34,7 +34,6 @@ Search for Beatbrowser in your web browser or launch the page from the repositor
 |[Spotify for Developers \| Web API](https://developer.spotify.com/) | [Docs](https://developer.spotify.com/documentation/web-api) | 
 
 
-
 ## Usage
 
 1. **Open BeatBrowser**: Start the application using the steps mentioned above.
