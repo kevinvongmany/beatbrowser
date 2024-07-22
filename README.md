@@ -44,7 +44,6 @@ Search for Beatbrowser in your web browser or launch the page from the repositor
 |[Day.js 1.11.3](https://day.js.org/en/) | [Docs](https://day.js.org/docs/en/installation/browser) | https://github.com/iamkun/dayjs/ |
 
 
-```
 
 ## Usage
 
